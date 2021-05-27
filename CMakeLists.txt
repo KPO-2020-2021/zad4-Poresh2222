@@ -38,13 +38,13 @@ find_lto(CXX)
 #                         Locate files (change as needed).
 # --------------------------------------------------------------------------------
 set(SOURCES          # All .cpp files in src/
-    src/Cube.cpp
+    src/Object.cpp
     src/lacze_do_gnuplota
+    src/Matrix.cpp
     src/Matrix2D.cpp
     src/Matrix3D.cpp
     src/Scene.cpp
-    src/Vector2D.cpp
-    src/Vector3D.cpp
+    src/Vector.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp

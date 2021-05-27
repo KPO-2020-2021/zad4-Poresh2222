@@ -3,10 +3,14 @@
 #include "../tests/doctest/doctest.h"
 #endif
 
+
 #include <iostream>
 #include <stdlib.h>
 
 #include "exampleConfig.h"
+#include "../include/lacze_do_gnuplota.hh"
+#include "../include/Object.hh"
+
 
 
 int main() {
@@ -16,6 +20,25 @@ int main() {
   double XL, YL, ZL;
 
   int center; //Central point of object(Vector3D)
+
+  double Tab[CUBE][Size] = {{0, 0, 0},{10, 0, 0},{10, 10, 0},{0, 10, 0},{0, 0, 10},{10, 0, 10},{10, 10, 10},{0, 10, 10}};
+
+  Object Obj(Tab);
+
+  std::cout << std::endl << Obj << std::endl;
+
+
+  PzG::LaczeDoGNUPlota Lacze;
+
+  Lacze.DodajNazwePliku("../datasets/prostopadloscian1.dat",PzG::RR_Ciagly,2);
+
+  Lacze.Inicjalizuj();
+
+  Lacze.ZmienTrybRys(PzG::TR_3D);
+
+  Lacze.UstawZakresY(-100, 100);
+  Lacze.UstawZakresX(-100, 100);
+  Lacze.UstawZakresZ(-100, 100);
 
   std::cout << "C++ Boiler Plate v"
             << PROJECT_VERSION_MAJOR

@@ -163,9 +163,9 @@ std::istream &operator>>(std::istream &in, Matrix<Size> &mat) {
 template <unsigned int Size>
 std::ostream &operator<<(std::ostream &out, const Matrix<Size> &mat) {
 
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < Size; ++i) {
 
-        for (int j = 0; j < SIZE; ++j) {
+        for (int j = 0; j < Size; ++j) {
 
             out << "| " << mat(i, j) << " | ";
 
