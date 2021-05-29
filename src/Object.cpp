@@ -29,6 +29,20 @@ Object::Object(const Object &obj) {
 
 }
 
+Object::Object(double tmp[CUBE][SIZE]) {
+
+    for (int i = 0; i < CUBE; ++i) {
+
+        for (int j = 0; j < SIZE; ++j) {
+
+            LokCorners[i][j] = tmp[i][j];
+
+        }
+
+    }
+
+}
+
 double &Object::operator () (unsigned int row, unsigned int column) {
 
     if (row >= CUBE || column >= 3) {
@@ -85,8 +99,41 @@ bool SaveToFile(const char *FileName, Object &Obj) {
 
     }
 
-    file << Obj;
-    file << Obj(0, 0)<< "    " << Obj(0, 0);
+    //file << Obj(0, 0) << "   " << Obj(0, 1) << "   " << Obj(0, 2);
+    //file << Obj(1, 0) << "   " << Obj(1, 1) << "   " << Obj(1, 2);
+    //file << Obj(2, 0) << "   " << Obj(2, 1) << "   " << Obj(2, 2);
+    //file << Obj(3, 0) << "   " << Obj(3, 1) << "   " << Obj(3, 2);
+    //file << Obj(4, 0) << "   " << Obj(4, 1) << "   " << Obj(4, 2);
+    //file << Obj(5, 0) << "   " << Obj(5, 1) << "   " << Obj(5, 2);
+    //file << Obj(6, 0) << "   " << Obj(6, 1) << "   " << Obj(6, 2);
+    //file << Obj(7, 0) << "   " << Obj(7, 1) << "   " << Obj(7, 2);
+
+    file << Obj(0, 0) << "   " << Obj(0, 1) << "   " << Obj(0, 2) << "\n";
+    file << Obj(1, 0) << "   " << Obj(1, 1) << "   " << Obj(1, 2) << "\n";
+    file << Obj(2, 0) << "   " << Obj(2, 1) << "   " << Obj(2, 2) << "\n";
+    file << Obj(3, 0) << "   " << Obj(3, 1) << "   " << Obj(3, 2) << "\n";
+
+    file << Obj(0, 0) << "   " << Obj(0, 1) << "   " << Obj(0, 2) << "\n";
+
+    file << Obj(4, 0) << "   " << Obj(4, 1) << "   " << Obj(4, 2) << "\n";
+    file << Obj(5, 0) << "   " << Obj(5, 1) << "   " << Obj(5, 2) << "\n";
+    file << Obj(6, 0) << "   " << Obj(6, 1) << "   " << Obj(6, 2) << "\n";
+    file << Obj(7, 0) << "   " << Obj(7, 1) << "   " << Obj(7, 2) << "\n";
+
+    file << Obj(4, 0) << "   " << Obj(4, 1) << "   " << Obj(4, 2) << "\n";
+
+    file << Obj(0, 0) << "   " << Obj(0, 1) << "   " << Obj(0, 2) << "\n";
+
+    file << Obj(1, 0) << "   " << Obj(1, 1) << "   " << Obj(1, 2) << "\n";
+    file << Obj(5, 0) << "   " << Obj(5, 1) << "   " << Obj(5, 2) << "\n";
+
+    file << Obj(6, 0) << "   " << Obj(6, 1) << "   " << Obj(6, 2) << "\n";
+    file << Obj(2, 0) << "   " << Obj(2, 1) << "   " << Obj(2, 2) << "\n";
+
+    file << Obj(3, 0) << "   " << Obj(3, 1) << "   " << Obj(3, 2) << "\n";
+    file << Obj(7, 0) << "   " << Obj(7, 1) << "   " << Obj(7, 2) << "\n";
+
+    file << "------------------------------------------\n" << Obj << "\n";
 
     file.close();
 

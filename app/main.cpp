@@ -10,6 +10,7 @@
 #include "exampleConfig.h"
 #include "../include/lacze_do_gnuplota.hh"
 #include "../include/Object.hh"
+#include "../include/Scene.hh"
 
 
 
@@ -19,26 +20,20 @@ int main() {
 
   double XL, YL, ZL;
 
-  int center; //Central point of object(Vector3D)
+  std::string fileName = "../data/object";
 
-  double Tab[CUBE][Size] = {{0, 0, 0},{10, 0, 0},{10, 10, 0},{0, 10, 0},{0, 0, 10},{10, 0, 10},{10, 10, 10},{0, 10, 10}};
+  Vector3D startCorner; //Central point of object(Vector3D)
 
-  Object Obj(Tab);
-
-  std::cout << std::endl << Obj << std::endl;
+  Scene Sce;
 
 
   PzG::LaczeDoGNUPlota Lacze;
 
-  Lacze.DodajNazwePliku("../datasets/prostopadloscian1.dat",PzG::RR_Ciagly,2);
-
-  Lacze.Inicjalizuj();
-
   Lacze.ZmienTrybRys(PzG::TR_3D);
 
-  Lacze.UstawZakresY(-100, 100);
-  Lacze.UstawZakresX(-100, 100);
-  Lacze.UstawZakresZ(-100, 100);
+  Lacze.UstawZakresY(0, 100);
+  Lacze.UstawZakresX(0, 100);
+  Lacze.UstawZakresZ(0, 100);
 
   std::cout << "C++ Boiler Plate v"
             << PROJECT_VERSION_MAJOR
@@ -72,14 +67,25 @@ int main() {
 
         case 'c':
 
-          std::cout << "Enter central point of object" << std::endl;
-          std::cin >> center;
+          int type;
+
+          std::cout << "Enter start point of object" << std::endl;
+          std::cin >> startCorner;
 
           std::cout << "Enter object's value X Y Z" << std::endl;
           std::cin >> XL >> YL >> ZL;
 
-          //CreateObj(center, XL, YL, ZL)
+          std::cout << "Enter type of object" << std::endl;
+          std::cout << "1 -> Cube" << std::endl;
+          std::cout << "2 -> Pyramid" << std::endl;
+          std::cout << "0 -> back" << std::endl;
+          std::cin >> type;
 
+          Sce.NewObject(startCorner, XL, YL, ZL, type);
+
+          Lacze.DodajNazwePliku("../data/object.dat",PzG::RR_Ciagly,2);
+          Lacze.Rysuj();
+          
         break;
 
       }

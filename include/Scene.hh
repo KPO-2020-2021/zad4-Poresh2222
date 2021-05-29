@@ -6,16 +6,28 @@
 #include <string.h>
 
 #include "../include/Size.hh"
-#include "../include/Cube.hh"
+#include "../include/Object.hh"
 
 //
 
 class Scene {
 
-    //std::vector
+    std::vector <Object> Obj;
+
+    std::vector <Vector3D> Vec;
 
     public:
 
-        void NewObject();
+        void NewObject(
+            
+            const Vector3D startCorner, 
+
+            const double XL, 
+            const double YL,
+            const double ZL,
+
+            const int type
+            
+        );
 
 };

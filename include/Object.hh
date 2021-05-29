@@ -32,9 +32,8 @@ class Object {
 
         const double &operator () (unsigned int row, unsigned int column) const;
 
-
-        bool SaveToFile(const char *FileName);
-
 };
+
+bool SaveToFile(const char *FileName,  Object &Obj);
 
 std::ostream &operator << (std::ostream &out, const Object &Obj);
