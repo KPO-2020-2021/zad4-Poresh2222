@@ -13,12 +13,13 @@
 #include "../include/Scene.hh"
 
 
-
 int main() {
 
   char choise;
 
   double XL, YL, ZL;
+
+  int objectIndex = 0;
 
   std::string fileName = "../data/object";
 
@@ -28,6 +29,8 @@ int main() {
 
 
   PzG::LaczeDoGNUPlota Lacze;
+
+  //Lacze.DodajNazwePliku("../data/object1.dat", PzG::RR_Ciagly,2);
 
   Lacze.ZmienTrybRys(PzG::TR_3D);
 
@@ -81,10 +84,17 @@ int main() {
           std::cout << "0 -> back" << std::endl;
           std::cin >> type;
 
-          Sce.NewObject(startCorner, XL, YL, ZL, type);
+          objectIndex += 1;
 
-          Lacze.DodajNazwePliku("../data/object.dat",PzG::RR_Ciagly,2);
+          Sce.NewObject(startCorner, XL, YL, ZL, type, objectIndex); // add object index + create new .dat file
+
+          fileName = fileName + std::to_string(objectIndex) + ".dat";
+
+          Lacze.DodajNazwePliku(fileName.c_str(),PzG::RR_Ciagly,2);
+
           Lacze.Rysuj();
+
+          fileName = fileName = "../data/object";
           
         break;
 

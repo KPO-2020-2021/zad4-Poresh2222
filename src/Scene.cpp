@@ -9,9 +9,14 @@ void Scene::NewObject(
         const double YL,
         const double ZL,
 
-        const int type
+        const int type,
+
+        int objectIndex
 
     ) {
+
+    std::string fileName = "../data/object";
+    fileName = fileName + std::to_string(objectIndex) + ".dat";
 
     Vector3D sizeTab;
 
@@ -47,7 +52,7 @@ void Scene::NewObject(
                 (i == 4 && j == 2) ||
                 (i == 5 && j != 1) ||
                 (i == 6 && j != 3) ||
-                (i == 7 && j != 0) ) {
+                (i == 7 && j != 0) ){
 
                 cornersTab[i][j] = cornersTab[i][j] + sizeTab[j];
 
@@ -61,7 +66,7 @@ void Scene::NewObject(
 
     std::cout << Obj << std::endl;
 
-    SaveToFile("../data/object.dat", Obj);
+    SaveToFile(fileName.c_str(), Obj);
 
     std::cout << type << std::endl;
 

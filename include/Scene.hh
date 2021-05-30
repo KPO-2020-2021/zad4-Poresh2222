@@ -26,7 +26,9 @@ class Scene {
             const double YL,
             const double ZL,
 
-            const int type
+            const int type,
+
+            int objectIndex
             
         );
 
