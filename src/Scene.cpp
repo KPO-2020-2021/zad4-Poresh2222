@@ -1,4 +1,5 @@
 #include "../include/Scene.hh"
+#include "../include/Size.hh"
 
 
 void Scene::NewObject(
@@ -15,10 +16,12 @@ void Scene::NewObject(
 
     ) {
 
+    Vec.push_back(startCorner);
+
     std::string fileName = "../data/object";
     fileName = fileName + std::to_string(objectIndex) + ".dat";
 
-    Vector3D sizeTab;
+    Vector3D sizeTab, tmp;
 
     for (int i = 0; i < SIZE; ++i) {
 
@@ -62,12 +65,36 @@ void Scene::NewObject(
 
     }
 
-    Object Obj(cornersTab);
+    Object obj(cornersTab);
 
-    std::cout << Obj << std::endl;
+    std::cout << obj << std::endl;
 
-    SaveToFile(fileName.c_str(), Obj);
+    SaveToFile(fileName.c_str(), obj);
 
     std::cout << type << std::endl;
+
+    Obj.push_back(obj);
+
+}
+
+void Scene::Translate(const Vector3D V, const int ObjectIndex) {
+    Vector3D tmp = V;
+
+    std::string fileName = "../data/object";
+    fileName = fileName + std::to_string(ObjectIndex) + ".dat";
+
+    Vec.at(ObjectIndex) = Vec.at(ObjectIndex) + tmp;
+
+    for (int i = 0; i < CUBE; ++i) {
+
+        for (int j = 0; j < SIZE; ++j) {
+
+            Obj.at(ObjectIndex)(i, j) = Obj.at(ObjectIndex)(i, j) + tmp[j];
+
+        }
+
+    }
+
+    SaveToFile(fileName.c_str(), Obj.at(ObjectIndex));
 
 }

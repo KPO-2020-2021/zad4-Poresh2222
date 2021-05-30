@@ -7,6 +7,7 @@
 
 #include "../include/Size.hh"
 #include "../include/Object.hh"
+#include "../include/Matrix3D.hh"
 
 //
 
@@ -15,6 +16,8 @@ class Scene {
     std::vector <Object> Obj;
 
     std::vector <Vector3D> Vec;
+
+    std::vector <Matrix3D> Mat;
 
     public:
 
@@ -31,5 +34,7 @@ class Scene {
             int objectIndex
             
         );
+
+        void Translate(const Vector3D, const int);
 
 };

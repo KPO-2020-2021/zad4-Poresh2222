@@ -19,11 +19,11 @@ int main() {
 
   double XL, YL, ZL;
 
-  int objectIndex = 0;
+  int objectIndex = 0, ObjectIndex;
 
   std::string fileName = "../data/object";
 
-  Vector3D startCorner; //Central point of object(Vector3D)
+  Vector3D startCorner, V; //Start point of object(Vector3D)
 
   Scene Sce;
 
@@ -55,6 +55,7 @@ int main() {
     while (choise != 'f') {
       
       std::cout << "c - create new object" << std::endl;
+      std::cout << "m - move object" << std::endl;
       std::cout << "f - finish program" << std:: endl;
 
       std::cout << "Your choise: " << std::endl;
@@ -84,9 +85,7 @@ int main() {
           std::cout << "0 -> back" << std::endl;
           std::cin >> type;
 
-          objectIndex += 1;
-
-          Sce.NewObject(startCorner, XL, YL, ZL, type, objectIndex); // add object index + create new .dat file
+          Sce.NewObject(startCorner, XL, YL, ZL, type, objectIndex);
 
           fileName = fileName + std::to_string(objectIndex) + ".dat";
 
@@ -95,7 +94,31 @@ int main() {
           Lacze.Rysuj();
 
           fileName = fileName = "../data/object";
+
+          objectIndex += 1;
           
+        break;
+
+        case 'm':
+
+          std::cout << "Give number for object" << std::endl;
+          std::cin >> ObjectIndex;
+
+          //if ObjInd < 0 or ObjInb > objInd -> runtimeError
+
+          std::cout << "Give vector X Y Z" << std::endl;
+          std::cin >> V;
+
+          Sce.Translate(V, ObjectIndex - 1);
+
+          fileName = fileName + std::to_string(ObjectIndex - 1) + ".dat";
+
+          Lacze.DodajNazwePliku(fileName.c_str(),PzG::RR_Ciagly,2);
+
+          Lacze.Rysuj();
+
+          fileName = fileName = "../data/object";
+
         break;
 
       }
