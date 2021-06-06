@@ -29,18 +29,32 @@ Object::Object(const Object &obj) {
 
 }
 
-Object::Object(double tmp[CUBE][SIZE]) {
+Object::Object(Vector3D tmp[CUBE]) {
 
-    for (int i = 0; i < CUBE; ++i) {
-
-        for (int j = 0; j < SIZE; ++j) {
-
-            LokCorners[i][j] = tmp[i][j];
-
-        }
+    for (unsigned int i = 0; i < CUBE; ++i) {
+            
+        LokCorners[i] = tmp[i];
 
     }
 
+}
+
+
+Vector3D &Object::operator[](int index) {
+
+    return const_cast<Vector3D &>(const_cast<const Object *>(this)->operator[](index));
+
+}
+
+const Vector3D &Object::operator [] (int index) const {
+
+    if (index < 0 || index >= CUBE) {
+
+        throw std::runtime_error("Error: Vec out of range!");
+
+    }
+
+    return LokCorners[index];
 }
 
 double &Object::operator () (unsigned int row, unsigned int column) {

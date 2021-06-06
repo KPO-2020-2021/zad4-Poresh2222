@@ -9,32 +9,54 @@
 #include "../include/Object.hh"
 #include "../include/Matrix3D.hh"
 
-//
-
 class Scene {
 
     std::vector <Object> Obj;
 
     std::vector <Vector3D> Vec;
 
-    std::vector <Matrix3D> Mat;
+    std::vector <Matrix3D> MatrixDef;
+
+    std::vector <Matrix3D> MatrixShadow;
 
     public:
 
         void NewObject(
             
-            const Vector3D startCorner, 
+            const Vector3D, 
 
-            const double XL, 
-            const double YL,
-            const double ZL,
+            const Vector3D,
 
-            const int type,
-
-            int objectIndex
+            const int 
             
         );
 
-        void Translate(const Vector3D, const int);
+        void Translate(
+            
+            const Vector3D, 
+            
+            const int
+            
+        );
+
+        void PreRotateObject(
+
+            char,
+
+            double,
+
+            const int,
+
+            const int
+
+        );
+
+        void RotateObject(
+
+            const int,
+
+            const int
+
+        );
 
 };

@@ -10,22 +10,19 @@
 
 class Object {
 
-    Vector3D Corners[CUBE];
-
     Vector3D LokCorners[CUBE];
 
     public:
 
         Object();
 
-        Object(double [CUBE][Size]);
-
         Object(const Object &obj);
 
+        Object(Vector3D ObjectCorners[CUBE]);
 
-        //Vector3D &operator [] (int index);
+        Vector3D &operator [] (int index);
 
-        //const Vector3D &operator [] (int index) const;
+        const Vector3D &operator [] (int index) const;
 
 
         double &operator () (unsigned int row, unsigned int column);
