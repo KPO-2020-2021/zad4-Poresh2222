@@ -118,12 +118,14 @@ int main() {
 
         case 'r':
 
+          deepChoise = ' ';
+
           while (deepChoise != 'b') {
 
             std::cout << "Rotate Menu" << std::endl;
             std::cout << "n - New rotation" << std::endl;
             std::cout << "r - Repeat rotation" << std::endl;
-            std::cout << "s - Show matrix" << std::endl;
+            std::cout << "s - Show obj info" << std::endl;
             std::cout << "b - Back" << std::endl;
             std::cout << "Your choise: " << std::endl;
             std::cin >> deepChoise;
@@ -154,6 +156,30 @@ int main() {
                 Lacze.Rysuj();
 
                 fileName = fileName = "../data/object";
+
+              break;
+
+              case 'r':
+
+                Sce.RotateObject(iterations, ObjectIndex - 1);
+
+                fileName = fileName + std::to_string(ObjectIndex - 1) + ".dat";
+                Lacze.DodajNazwePliku(fileName.c_str(),PzG::RR_Ciagly,2);
+
+                Lacze.Rysuj();
+
+                fileName = fileName = "../data/object";
+
+              break;
+
+              case 's':
+
+                std::cout << "Give number for object" << std::endl;
+                std::cin >> ObjectIndex;
+
+                Sce.ShowInfo(ObjectIndex - 1);
+
+                Sce.ChekSize(ObjectIndex - 1);
 
               break;
 

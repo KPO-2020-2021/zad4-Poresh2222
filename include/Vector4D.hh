@@ -3,4 +3,4 @@
 #include "Vector.hh"
 #include "Size.hh"
 
-typedef Vector<3> Vector3D;
+typedef Vector<4> Vector4D;

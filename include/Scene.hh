@@ -59,4 +59,16 @@ class Scene {
 
         );
 
+        void ShowInfo(
+
+            const int
+        
+        );
+
+        void ChekSize(
+
+            const int
+
+        );
+
 };

@@ -81,7 +81,7 @@ Matrix<Size>::Matrix(double tmp[Size][Size]) {
 }
 
 template <unsigned int Size>
-Vector<Size> Matrix<Size>::operator * (Vector<Size> tmp) {
+Vector<Size> Matrix<Size>::operator * (const Vector<Size> tmp) {
     Vector<Size> result;
 
     for (unsigned int i = 0; i < Size; ++i) {
